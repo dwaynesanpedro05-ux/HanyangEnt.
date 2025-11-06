@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HANYANG ENTERPRISES</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        
+.profile-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#profileBtn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#profileBtn:hover {
+    background: #218838;
+}
+
+/* Optional: adjust modal-content for profile */
+#profileContent {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+        }
+
+        header, section, footer {
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Buttons for category filter */
+        .category-buttons {
+            margin-bottom: 20px;
+        }
+
+        .category-buttons button {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .category-buttons button:hover {
+            background: #555;
+        }
+
+        .category-buttons button.active {
+            background: #007BFF;
+        }
+
+        /* Product styling */
+        .product {
+            display: inline-block;
+            margin: 15px;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .product img {
+            width: 200px;
+            height: auto;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .product img:hover {
+            transform: scale(1.05);
+        }
+
+        /* === IMAGE POPUP / MODAL === */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 80%;
+            border-radius: 10px;
+        }
+
+        /* Close button */
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>HANYANG ENTERPRISES</h1>
+        <p>It is not possible to have a perfect home without perfect furniture. You create a culture – it is our inspiration to create furniture.</p>
+    </header>
+
+    <!-- Profile Button -->
+<section class="profile-section">
+    <button id="profileBtn">Company Profile</button>
+</section>
+
+<!-- Profile Modal -->
+<div id="profileModal" class="modal">
+    <span class="close" id="closeProfile">&times;</span>
+    <div class="modal-content" id="profileContent" style="color:white; text-align:center;">
+        <h2>HANYANG ENTERPRISES</h2>
+        <p><strong>Mission:</strong> To create perfect furniture for a perfect home.</p>
+        <p><strong>Vision:</strong> A culture inspired by quality furniture design.</p>
+        <p><strong>Contact:</strong> @hanyangenterprises@gmail.com | +63 917 835 9635</p>
+        <p><strong>Address:</strong> H44G+W3R Sky Cable, Taytay, 1920 Rizal, Taytay, Philippines</p>
+    </div>
+</div>
+
+    <!-- Category Buttons -->
+    <section class="category-buttons">
+        <button class="active" onclick="filterProducts('all')">All</button>
+        <button onclick="filterProducts('Dining Set')">Dining Set</button>
+        <button onclick="filterProducts('Occasional Table')">Occasional Table</button>
+        <button onclick="filterProducts('Beds')">Beds</button>
+        <button onclick="filterProducts('Sofa & Recliner')">Sofa & Recliner</button>
+        <button onclick="filterProducts('Chairs')">Chairs</button>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products">
+        <h2>🛒 PRODUCTS</h2>
+
+        <!-- Dining Set -->
+        <div class="product" data-category="Dining Set">
+            <img src="1 (1).jpg" alt="set" class="clickable">
+            <h3>Dining Table</h3>
+            <p>Price: ₱29,400</p>
+        </div>
+
+        <div class="product" data-category="Dining Set">
+            <img src="1 (8).jpg" alt="set" class="clickable">
+            <h3>Dining Set</h3>
+            <p>Price: ₱30,000</p>
+        </div>
+
+        <div class="product" data-category="Dining Set">
+            <img src="1 (11).jpg" alt="set" class="clickable">
+            <h3>Dining Set</h3>
+            <p>Price: ₱100,000</p>
+        </div>
+
+        <div class="product" data-category="Dining Set">
+            <img src="1 (12).jpg" alt="set" class="clickable">
+            <h3>Dining Set</h3>
+            <p>Price: ₱49,420</p>
+        </div>
+
+        <div class="product" data-category="Dining Set">
+            <img src="1 (15).jpg" alt="set" class="clickable">
+            <h3>Dining Set</h3>
+            <p>Price: ₱30,000</p>
+        </div>
+
+        <div class="product" data-category="Dining Set">
+            <img src="1 (16).jpg" alt="set" class="clickable">
+            <h3>Dining Set</h3>
+            <p>Price: ₱24,000</p>
+        </div>
+
+        <div class="product" data-category="Dining Set">
+            <img src="1 (17).jpg" alt="set" class="clickable">
+            <h3>Dining Set</h3>
+            <p>Price: ₱22,000</p>
+        </div>
+
+
+
+        <!-- Occasional Table -->
+        <div class="product" data-category="Occasional Table">
+            <img src="1 (5).jpg" alt="Table " class="clickable">
+            <h3>Console Table</h3>
+            <p>Price: ₱6,000</p>
+        </div>
+
+        <div class="product" data-category="Occasional Table">
+            <img src="1 (6).jpg" alt="Table " class="clickable">
+            <h3>Center Table</h3>
+            <p>Price: ₱3,000</p>
+        </div>
+
+        <div class="product" data-category="Occasional Table">
+            <img src="1 (7).jpg" alt="Table " class="clickable">
+            <h3>Center Table</h3>
+            <p>Price: ₱4,200</p>
+        </div>
+
+        <div class="product" data-category="Occasional Table">
+            <img src="1 (18).jpg" alt="Table " class="clickable">
+            <h3>Console Table</h3>
+            <p>Price: ₱3,700</p>
+        </div>
+
+        <div class="product" data-category="Occasional Table">
+            <img src="1 (19).jpg" alt="Table " class="clickable">
+            <h3>Side Table</h3>
+            <p>Price: ₱3,700</p>
+        </div>
+
+        <div class="product" data-category="Occasional Table">
+            <img src="1 (20).jpg" alt="Table " class="clickable">
+            <h3>Side Table</h3>
+            <p>Price: ₱3,000</p>
+        </div>
+
+        <div class="product" data-category="Occasional Table">
+            <img src="1 (21).jpg" alt="Table " class="clickable">
+            <h3>Side Table</h3>
+            <p>Price: ₱3,000</p>
+        </div>
+
+        <div class="product" data-category="Occasional Table">
+            <img src="1 (22).jpg" alt="Table " class="clickable">
+            <h3>TV Stand</h3>
+            <p>Price: ₱8,000</p>
+        </div>
+
+        <div class="product" data-category="Occasional Table">
+            <img src="1 (23).jpg" alt="Table " class="clickable">
+            <h3>TV Stand</h3>
+            <p>Price: ₱8,000</p>
+        </div>
+
+        <div class="product" data-category="Occasional Table">
+            <img src="1 (31).jpg" alt="Table " class="clickable">
+            <h3>TV Stand</h3>
+            <p>Price: ₱7,500</p>
+        </div>
+
+        <div class="product" data-category="Occasional Table">
+            <img src="1 (35).jpg" alt="Table " class="clickable">
+            <h3>Bar Table</h3>
+            <p>Price: ₱7,200</p>
+        </div>
+
+        <!-- Sofa & Recliner -->
+        <div class="product" data-category="Sofa & Recliner">
+            <img src="1 (2).jpg" alt="Recliner" class="clickable">
+            <h3>Recliner 1 Seater</h3>
+            <p>Price: ₱17,500</p>
+        </div>
+
+        <div class="product" data-category="Sofa & Recliner">
+            <img src="1 (3).jpg" alt="Recliner" class="clickable">
+            <h3>Recliner 2 Seaters</h3>
+            <p>Price: ₱27,000</p>
+        </div>
+
+        <div class="product" data-category="Sofa & Recliner">
+            <img src="1 (4).jpg" alt="Recliner" class="clickable">
+            <h3>Recliner 3 Seaters</h3>
+            <p>Price: ₱35,500</p>
+        </div>
+
+        <!-- Beds -->
+        <div class="product" data-category="Beds">
+            <img src="1 (24).jpg" alt="Bed " class="clickable">
+            <h3>Bed Frame</h3>
+            <p>Price: ₱20,000</p>
+        </div>
+
+        <div class="product" data-category="Beds">
+            <img src="1 (26).jpg" alt="Bed " class="clickable">
+            <h3>Bed Frame</h3>
+            <p>Price: ₱16,000</p>
+        </div>
+
+        <div class="product" data-category="Beds">
+            <img src="1 (27).jpg" alt="Bed " class="clickable">
+            <h3>Bed Frame</h3>
+            <p>Price: ₱16,000</p>
+        </div>
+
+        <!-- Chairs -->
+        <div class="product" data-category="Chairs">
+            <img src="1 (13).jpg" alt="chairs" class="clickable">
+            <h3>Dining Chair</h3>
+            <p>Price: ₱4,200</p>
+        </div>
+
+        <div class="product" data-category="Chairs">
+            <img src="1 (14).jpg" alt="chairs" class="clickable">
+            <h3>Bar Chair</h3>
+            <p>Price: ₱4,200</p>
+        </div>
+
+        <div class="product" data-category="Chairs">
+            <img src="1 (9).jpg" alt="chairs" class="clickable">
+            <h3>Bench Chair</h3>
+            <p>Price: ₱5,000</p>
+        </div>
+
+        <div class="product" data-category="Chairs">
+            <img src="1 (25).jpg" alt="chairs" class="clickable">
+            <h3>Chair</h3>
+            <p>Price: ₱2,500</p>
+        </div>
+
+        <div class="product" data-category="Chairs">
+            <img src="1 (28).jpg" alt="chairs" class="clickable">
+            <h3>Chair</h3>
+            <p>Price: ₱5,500</p>
+        </div>
+
+        <div class="product" data-category="Chairs">
+            <img src="1 (29).jpg" alt="chairs" class="clickable">
+            <h3>Chair</h3>
+            <p>Price: ₱3,700</p>
+        </div>
+
+        <div class="product" data-category="Chairs">
+            <img src="1 (30).jpg" alt="chairs" class="clickable">
+            <h3>Chair</h3>
+            <p>Price: ₱2,500</p>
+        </div>
+
+    </section>
+
+    <!-- IMAGE POPUP MODAL -->
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <section id="social">
+        <h2>📱 Social Media</h2>
+        <div class="social-links">
+            <a href="https://www.facebook.com/profile.php?id=61562940233991" target="_blank">Facebook</a>
+            <a href="https://www.instagram.com/enterpriseshanyang/" target="_blank">Instagram</a>
+            <a href="https://www.tiktok.com/@hanyang_enterprises?lang=en" target="_blank">TikTok</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Aking Tindahan | Lahat ng karapatan ay nakalaan.</p>
+    </footer>
+
+    <script>
+
+        // Profile modal
+var profileModal = document.getElementById("profileModal");
+var profileBtn = document.getElementById("profileBtn");
+var closeProfile = document.getElementById("closeProfile");
+
+profileBtn.onclick = function() {
+    profileModal.style.display = "block";
+}
+
+closeProfile.onclick = function() {
+    profileModal.style.display = "none";
+}
+
+profileModal.onclick = function(event) {
+    if (event.target == profileModal) {
+        profileModal.style.display = "none";
+    }
+}
+
+        // === Image modal functionality ===
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("modalImage");
+        var closeBtn = document.getElementsByClassName("close")[0];
+
+        document.querySelectorAll('.clickable').forEach(img => {
+            img.addEventListener('click', function() {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            });
+        });
+
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        modal.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // === Category filter function ===
+        function filterProducts(category) {
+            const products = document.querySelectorAll('.product');
+            const buttons = document.querySelectorAll('.category-buttons button');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            products.forEach(product => {
+                if (category === 'all' || product.dataset.category === category) {
+                    product.style.display = 'inline-block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
